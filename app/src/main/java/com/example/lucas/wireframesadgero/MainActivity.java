@@ -37,9 +37,6 @@ public class MainActivity extends AppCompatActivity {
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
-    static boolean _changeValues = true;
-    static int _currentValue = MIN_VALUE;
-
     /**
      * The {@link ViewPager} that will host the section contents.
      */
@@ -48,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.fragment_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -57,36 +54,17 @@ public class MainActivity extends AppCompatActivity {
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
-
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(mViewPager);
-
-        tabLayout.getTabAt(0).setIcon(R.drawable.ic_battery_full_white_24dp);
-        tabLayout.getTabAt(1).setIcon(R.drawable.ic_gps_fixed_white_24dp);
-        tabLayout.getTabAt(2).setIcon(R.drawable.ic_show_chart_white_24dp);
-        tabLayout.getTabAt(3).setIcon(R.drawable.ic_nature_white_24dp);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-                _changeValues = !_changeValues;
-            }
-        });
+//        mViewPager = (ViewPager) findViewById(R.id.container);
+//        mViewPager.setAdapter(mSectionsPagerAdapter);
+//
+//        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+//        tabLayout.setupWithViewPager(mViewPager);
+//
+//        tabLayout.getTabAt(0).setIcon(R.drawable.ic_battery_full_white_24dp);
+//        tabLayout.getTabAt(1).setIcon(R.drawable.ic_gps_fixed_white_24dp);
+//        tabLayout.getTabAt(2).setIcon(R.drawable.ic_show_chart_white_24dp);
+//        tabLayout.getTabAt(3).setIcon(R.drawable.ic_nature_white_24dp);
     }
-
-    private static void incrementValue()
-    {
-        if (_currentValue == MAX_VALUE)
-            _currentValue = MIN_VALUE;
-        else
-            _currentValue++;
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -139,34 +117,6 @@ public class MainActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-
-            final CustomGauge gaugeView =  (CustomGauge)rootView.findViewById(R.id.gaugeView);
-            final TextView value = (TextView) rootView.findViewById(R.id.txtValue);
-            new AsyncTask<Void, Void, Void>()
-            {
-
-                @Override
-                protected Void doInBackground(Void... params) {
-                    while (_changeValues)
-                    {
-                        try {
-                            Thread.sleep(10);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        incrementValue();
-                        getActivity().runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                gaugeView.setValue(_currentValue);
-                                value.setText("" + _currentValue);
-                            }
-                        });
-                    }
-
-                    return null;
-                }
-            }.execute();
             return rootView;
         }
     }

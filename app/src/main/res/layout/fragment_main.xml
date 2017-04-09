@@ -1,58 +1,301 @@
-<ScrollView
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <RelativeLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        tools:context="com.example.lucas.wireframesadgero.MainActivity$PlaceholderFragment">
+        android:layout_height="wrap_content"
+        android:id="@+id/cardAccel"
+        android:layout_margin="16dp"
+        android:padding="8dp">
 
-        <pl.pawelkleczkowski.customgauge.CustomGauge
-            android:id="@+id/gaugeView"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_centerHorizontal="true"
-            android:paddingBottom="20dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:paddingTop="20dp"
-            app:gaugeStartAngle="135"
-            app:gaugeStrokeCap="ROUND"
-            app:gaugeStrokeColor="#BBBBBB"
-            app:gaugeStrokeWidth="10dp"
-            app:gaugeStartValue="0"
-            app:gaugeEndValue="100"
-            app:gaugeSweepAngle="270"
-            app:gaugePointStartColor="@color/lightGreen"
-            app:gaugePointEndColor="@color/darktGreen"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/accelTitle"
+            <TextView
+                android:id="@+id/accelTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Accélération"
+                android:textSize="42dp"
+                android:padding="8dp"/>
+
+            <pl.pawelkleczkowski.customgauge.CustomGauge
+                android:id="@+id/gaugeViewAccel"
+                android:layout_width="450dp"
+                android:layout_height="450dp"
+                android:layout_below="@id/accelTitle"
+                android:padding="20dp"
+                android:layout_centerHorizontal="true"
+                app:gaugeStartAngle="135"
+                app:gaugeStrokeCap="ROUND"
+                app:gaugeStrokeColor="#BBBBBB"
+                app:gaugeStrokeWidth="10dp"
+                app:gaugeStartValue="0"
+                app:gaugeEndValue="100"
+                app:gaugeSweepAngle="270"
+                app:gaugePointStartColor="@color/lightGreen"
+                app:gaugePointEndColor="@color/darktGreen"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/valueAccel"
+                android:text="50 km/h"
+                android:layout_centerInParent="true"
+                android:textSize="64dp"
+                android:textStyle="bold"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout_storageDelivery"
+        android:orientation="horizontal"
+        android:layout_below="@id/cardAccel">
+
+        <android.support.v7.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Accélération"
-            android:layout_centerHorizontal="true"
-            android:layout_alignBottom="@id/gaugeView"
-            android:layout_marginBottom="18dp"/>
+            android:id="@+id/cardStorage"
+            android:layout_margin="16dp"
+            android:padding="8dp"
+            android:layout_weight="1">
 
-        <TextView
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/storageTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Stockage"
+                    android:textSize="42dp"
+                    android:padding="8dp"/>
+
+                <pl.pawelkleczkowski.customgauge.CustomGauge
+                    android:id="@+id/gaugeViewStorage"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:layout_below="@id/storageTitle"
+                    android:padding="20dp"
+                    android:layout_centerHorizontal="true"
+                    app:gaugeStartAngle="135"
+                    app:gaugeStrokeCap="ROUND"
+                    app:gaugeStrokeColor="#BBBBBB"
+                    app:gaugeStrokeWidth="10dp"
+                    app:gaugeStartValue="0"
+                    app:gaugeEndValue="100"
+                    app:gaugeSweepAngle="270"
+                    app:gaugePointStartColor="@color/lightGreen"
+                    app:gaugePointEndColor="@color/darktGreen"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/valueStorage"
+                    android:text="28%"
+                    android:layout_centerInParent="true"
+                    android:textSize="42dp"
+                    android:textStyle="bold"/>
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/txtValue"
-            android:text="50"
-            android:layout_centerHorizontal="true"
-            android:layout_above="@id/accelTitle"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:layout_marginBottom="48dp"/>
+            android:id="@+id/cardDelivery"
+            android:layout_margin="16dp"
+            android:layout_weight="1"
+            android:padding="8dp">
 
-    </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-</ScrollView>
+                <TextView
+                    android:id="@+id/deliveryTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Distribution"
+                    android:textSize="42dp"
+                    android:padding="8dp"/>
+
+                <pl.pawelkleczkowski.customgauge.CustomGauge
+                    android:id="@+id/gaugeViewDelivery"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:layout_below="@id/deliveryTitle"
+                    android:padding="20dp"
+                    android:layout_centerHorizontal="true"
+                    app:gaugeStartAngle="135"
+                    app:gaugeStrokeCap="ROUND"
+                    app:gaugeStrokeColor="#BBBBBB"
+                    app:gaugeStrokeWidth="10dp"
+                    app:gaugeStartValue="0"
+                    app:gaugeEndValue="100"
+                    app:gaugeSweepAngle="270"
+                    app:gaugePointStartColor="@color/lightGreen"
+                    app:gaugePointEndColor="@color/darktGreen"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/valueDelivery"
+                    android:text="0%"
+                    android:layout_centerInParent="true"
+                    android:textSize="42dp"
+                    android:textStyle="bold"/>
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/layout_storageDelivery"
+        android:layout_alignParentBottom="true">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/cardAccelerometer"
+            android:layout_margin="16dp"
+            android:padding="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/accelerometerTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Accéléromètre"
+                    android:textSize="32dp"
+                    android:padding="8dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/valueXYZ"
+                    android:layout_alignParentBottom="true"
+                    android:textAlignment="center"
+                    android:textSize="32dp"
+                    android:text="x=120, y=10, z=1001"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageAxes"
+                    android:src="@drawable/axes"
+                    android:layout_below="@id/accelerometerTitle"
+                    android:layout_above="@id/valueXYZ"
+                    android:adjustViewBounds="true"/>
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/cardAltitude"
+            android:layout_margin="16dp"
+            android:layout_weight="1"
+            android:padding="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/altitudeTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Altitude"
+                    android:textSize="32dp"
+                    android:padding="8dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/valueAltitude"
+                    android:layout_alignParentBottom="true"
+                    android:textAlignment="center"
+                    android:textSize="32dp"
+                    android:text="250m"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageAltitude"
+                    android:src="@drawable/ic_terrain_black_48dp"
+                    android:layout_below="@id/altitudeTitle"
+                    android:layout_above="@id/valueAltitude"
+                    android:adjustViewBounds="true"/>
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/cardSlope"
+            android:layout_margin="16dp"
+            android:layout_weight="1"
+            android:padding="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/slopeTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Altitude"
+                    android:textSize="32dp"
+                    android:padding="8dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/valueSlope"
+                    android:layout_alignParentBottom="true"
+                    android:textAlignment="center"
+                    android:textSize="32dp"
+                    android:text="32°"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageSlope"
+                    android:src="@drawable/slope"
+                    android:layout_below="@id/slopeTitle"
+                    android:layout_above="@id/valueSlope"
+                    android:adjustViewBounds="true"/>
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+    
+</RelativeLayout>
